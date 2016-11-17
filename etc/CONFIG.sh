@@ -14,7 +14,7 @@ RSYNC_LOG="/tmp/rsync-log-`date +%Y.%m.%d`"
 
 ALFRESCO_SCRIPT="/opt/alfresco-community/alfresco.sh"
 PSQL_BIN="/opt/alfresco-community/postgresql/bin/psql"
-PGDUMP_BIN="/opt/alfresco-community/postgresql/bin/psql"
+PGDUMP_BIN="/opt/alfresco-community/postgresql/bin/pg_dump"
 PG_DATABASE="alfresco"
 
 # File to be used to check if the rsync is correctly configured

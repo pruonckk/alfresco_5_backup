@@ -16,14 +16,20 @@ source ../etc/CONFIG.sh
 
 # We need to stop alfresco as recomended by the documentation
 
+echo "Stopping tomcat"
+
 $ALFRESCO_SCRIPT stop tomcat
 
 
 # Starting the Postgres backup
 
+echo "Dumping the database"
+
 $PGDUMP_BIN -U postgres -Fc $PG_DATABASE -f $BKP_DIR/$PG_DATABASE-`date +%Y.%m.%d``   
 
 # Copying Postgresql Backup
+
+echo "Start rsync copy to $RSYNC_REMOTE"
 
 rsync -av --password-file=$RSYNC_SECRET_FILE  $BKP_DIR/* $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$RSYNC_DB_FOLDER
 

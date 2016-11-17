@@ -13,8 +13,8 @@ RSYNC_DIFF_FOLDER="backup_files/diff/ged"
 RSYNC_LOG="/tmp/rsync-log-`date +%Y.%m.%d`"
 
 ALFRESCO_SCRIPT="/opt/alfresco-community/alfresco.sh"
-PSQL_BIN="/optalfresco-community/postgres/bin/psql"
-PGDUMP_BIN="/optalfresco-community/postgres/bin/psql"
+PSQL_BIN="/opt/alfresco-community/postgres/bin/psql"
+PGDUMP_BIN="/opt/alfresco-community/postgres/bin/psql"
 PG_DATABASE="alfresco"
 
 # File to be used to check if the rsync is correctly configured

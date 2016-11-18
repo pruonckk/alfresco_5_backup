@@ -25,7 +25,7 @@ $ALFRESCO_SCRIPT stop tomcat
 
 echo "Dumping the database"
 
-$PGDUMP_BIN -U postgres -Fc $PG_DATABASE -f $BKP_DIR/$PG_DATABASE-`date +%Y.%m.%d``   
+$PGDUMP_BIN -U postgres -Fc $PG_DATABASE -f $BKP_DIR/$PG_DATABASE-`date +%Y.%m.%d`.dbc 
 
 # Copying Postgresql Backup
 
@@ -39,3 +39,22 @@ rsync -av --password-file=$RSYNC_SECRET_FILE  $BKP_DIR/* $RSYNC_USER@$RSYNC_HOST
 # RESTORE: pg_dump -U postgres -v -Fc base -f base.dbc
 
 
+# Starting rsync of ged
+
+echo "rsync -av --password-file=$RSYNC_SECRET_FILE  $ALFRESCO_ROOT_DIR/* --backup-dir=$RSYNC_DIFF_FOLDER $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$RSYNC_GED_FOLDER"
+
+# TODO : check the way to do the diff on the remote server, below you have the entry with the backdir
+# rsync -av --password-file=$RSYNC_SECRET_FILE  $ALFRESCO_ROOT_DIR/* --backup-dir=$RSYNC_DIFF_FOLDER $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$RSYNC_GED_FOLDER
+
+# Right now we are doing backups without the DIFF
+rsync -av --password-file=$RSYNC_SECRET_FILE  $ALFRESCO_ROOT_DIR/* $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$RSYNC_GED_FOLDER
+
+echo "Sarting tomcat"
+
+$ALFRESCO_SCRIPT start tomcat
+
+echo "Starting to cleanup the postgres backup"
+
+if [ -d $BKP_DIR ]; then
+	find $BKP_DIR/ -name "*.dbc" -ctime +$PG_MAX_DAYS -exec rm -vrf {} \; 
+fi

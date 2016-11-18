@@ -1,0 +1,14 @@
+use chroot = yes
+# motd file = /etc/rsyncd.motd
+hosts allow = 192.168.1.16
+read only = yes
+#list = no 
+uid = root
+gid = root
+strict modes = false
+
+
+[backup]
+path = /mnt/backup
+comment = Backups enviados 
+read only = no 

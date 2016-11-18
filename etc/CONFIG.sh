@@ -20,3 +20,5 @@ PG_DATABASE="alfresco"
 # File to be used to check if the rsync is correctly configured
 USB_CONTROL_FILE="control"
 
+
+ALFRESCO_ROOT_DIR="/opt/alfresco-community/alf_data"

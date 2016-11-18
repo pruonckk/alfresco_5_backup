@@ -47,7 +47,7 @@ echo "rsync -av --password-file=$RSYNC_SECRET_FILE  $ALFRESCO_ROOT_DIR/* --backu
 # rsync -av --password-file=$RSYNC_SECRET_FILE  $ALFRESCO_ROOT_DIR/* --backup-dir=$RSYNC_DIFF_FOLDER $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$RSYNC_GED_FOLDER
 
 # Right now we are doing backups without the DIFF
-rsync -av --password-file=$RSYNC_SECRET_FILE  $ALFRESCO_ROOT_DIR/* $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$RSYNC_GED_FOLDER
+rsync -av --password-file=$RSYNC_SECRET_FILE --delete  $ALFRESCO_ROOT_DIR/* $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$RSYNC_GED_FOLDER
 
 echo "Sarting tomcat"
 

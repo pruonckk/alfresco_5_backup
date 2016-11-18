@@ -22,3 +22,7 @@ USB_CONTROL_FILE="control"
 
 
 ALFRESCO_ROOT_DIR="/opt/alfresco-community/alf_data"
+
+
+# How many days we should maintain the postgres backup locally
+PG_MAX_DAYS=3

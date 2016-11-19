@@ -58,3 +58,7 @@ echo "[$(date "+%d.%m.%Y %H.%M.%S")]: Starting to cleanup the postgres backup"
 if [ -d $BKP_DIR ]; then
 	find $BKP_DIR/ -name "*.dbc" -ctime +$PG_MAX_DAYS -exec rm -vrf {} \; 
 fi
+
+
+echo "[$(date " +%d.%m.%Y %H:%M:%S")] No more task"
+

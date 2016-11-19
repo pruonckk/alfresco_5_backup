@@ -13,6 +13,17 @@ fi
 
 source ../etc/CONFIG.sh
 
+# Testing the RSYNC connectivity before starting the script
+
+rsync -q --list-only --password-file=$RSYNC_SECRET_FILE $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$USB_CONTROL_FILE
+
+if [ "$?" -ne "0" ]; then
+	echo "We cant contact the $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$USB_CONTROL_FILE file, so we will not continue the backup operation"
+	exit 1
+fi
+
+
+
 
 # We need to stop alfresco as recomended by the documentation
 

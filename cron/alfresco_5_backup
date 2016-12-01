@@ -1,0 +1,1 @@
+0 0 * * * root cd /mnt/backup/alfresco_5_backup/bin/ && /mnt/backup/alfresco_5_backup/bin/alfresco_bkp.sh > /var/log/backup-`date +%d.%m.%Y`.log && python /mnt/backup/alfresco_5_backup/bin/envia_email.py /var/log/backup-`date +%d.%m.%Y`.log

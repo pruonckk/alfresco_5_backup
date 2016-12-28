@@ -42,7 +42,7 @@ $PGDUMP_BIN -U postgres -Fc $PG_DATABASE -f $BKP_DIR/$PG_DATABASE-`date +%Y.%m.%
 
 echo "[$(date "+%d.%m.%Y %H.%M.%S")]: Start rsync copy to $RSYNC_REMOTE"
 
-rsync -av --password-file=$RSYNC_SECRET_FILE  $BKP_DIR/* $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$RSYNC_DB_FOLDER
+rsync -av --password-file=$RSYNC_SECRET_FILE --delete $BKP_DIR/ $RSYNC_USER@$RSYNC_HOST::$RSYNC_REMOTE_MODULE/$RSYNC_DB_FOLDER
 
 
 #$ALFRESCO_SCRIPT stop postgres 
